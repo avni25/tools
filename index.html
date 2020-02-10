@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body id="body" >
+
+    <p id="p0">avni</p>
+    <p id="p1"></p>
+    <div class="btn-group">
+        <button class="btn" id="b1">read</button>
+        <button class="btn" id="b2">generate</button>
+        <button class="btn" id="b3">click me</button>
+    </div>
+    
+    <div class="input-group">
+        <input id="ip" type="text" onkeyup="writeToText(event)">
+        <label id="time"></label>
+    </div>
+    
+    <canvas id="c" width="600px" height="400px" ></canvas>
+    <div>
+        <div id="chartContainer" style="height: 300px; width: 50%;"></div>
+    </div>
+</body>
+
+<script src="script.js"></script>
+<script src="canvasjs.min.js"></script>
+</html>
