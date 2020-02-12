@@ -14,3 +14,68 @@ p {
    
     background-color: azure;
 }
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+    text-align: center;
+    border-spacing: 1px;
+}
+
+label {
+    font-size: 30px;
+    font-weight: 800;
+    width: 40%;
+}
+#min{
+    font-size: 20px;
+    font-weight: 400;
+}
+#zone{
+    font-size: 20px;
+    font-weight: 400;
+}
+input {
+    width: 30%;
+    height: 25px;
+    font-size: 30px;
+}
+
+button{
+    box-shadow: 0px 0px 0px 2px #9fb4f2;
+	background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+	background-color:#c9110b;
+	border-radius:10px;
+	border:1px solid #4e6096;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:19px;
+	padding:12px 37px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #283966;
+}
+
+button:hover {
+    background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+	background-color:#476e9e;
+}
+
+Button:active {
+	position:relative;
+	top:1px;
+}
+
+
+select {
+    position: relative;
+    font-family: Arial;
+    font-size: 20px;
+}
+  
+select select {
+    display: none; /*hide original SELECT element: */
+}
+  
