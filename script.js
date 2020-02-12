@@ -1,6 +1,3 @@
-var sounds = ["zero.mp3","one.mp3","two.mp3","three.mp3","four.mp3","five.mp3",
-              "six.mp3","seven.mp3","eight.mp3","nine.mp3","ten.mp3"];
-
 
 var colors = ["white","blue", "black", "yellow", "green", "red","pink","purple","brown"];
 
@@ -13,157 +10,184 @@ function myTime(){
     document.getElementById("p1").textContent = n;
 
 }
+var min = document.getElementById("minutes");
+var time_zone = document.getElementById("timeZone");
 
-var btn1 = document.getElementById("b1");
-var b2 = document.getElementById("b2");
 var b3 = document.getElementById("b3");
 
 var p0 = document.getElementById("p0");
-var ptime = document.getElementById("time");
-var input = document.getElementById("ip");
+var lbl1 = document.getElementById("lbl-1");
+var lbl1_1 = document.getElementById("lbl-1-1");
+var ip1 = document.getElementById("ip-1");
+var lbl2 = document.getElementById("lbl-2");
+var lbl2_1 = document.getElementById("lbl-2-1");
+var ip2 = document.getElementById("ip-2");
+var ip3 = document.getElementById("ip-3");
+var lbl3 = document.getElementById("lbl-3");
+var lbl3_1 = document.getElementById("lbl-3-1");
+
+var ip4 = document.getElementById("ip-4");
+var lbl4 = document.getElementById("lbl-4");
+var lbl4_1 = document.getElementById("lbl-4-1");
+
+var ip5 = document.getElementById("ip-5");
+var lbl5 = document.getElementById("lbl-5");
+var lbl5_1 = document.getElementById("lbl-5-1");
+
+var ip6 = document.getElementById("ip-6");
+var lbl6 = document.getElementById("lbl-6");
+var lbl6_1 = document.getElementById("lbl-6-1");
+
+var ip7 = document.getElementById("ip-7");
+var lbl7 = document.getElementById("lbl-7");
+var lbl7_1 = document.getElementById("lbl-7-1");
+
+var ip8 = document.getElementById("ip-8");
+var lbl8 = document.getElementById("lbl-8");
+var lbl8_1 = document.getElementById("lbl-8-1");
+
+var ip9 = document.getElementById("ip-9");
+var lbl9 = document.getElementById("lbl-9");
+var lbl9_1 = document.getElementById("lbl-9-1");
+
+var ip10 = document.getElementById("ip-10");
+var lbl10 = document.getElementById("lbl-10");
+var lbl10_1 = document.getElementById("lbl-10-1");
 
 
-document.addEventListener("click", function(){    
-    var x = Math.ceil((event.clientX-8) /sizeOfSqr);     // Get the horizontal coordinate
-    var y = Math.ceil((event.clientY-256) /sizeOfSqr);
-    console.log( "clientX: " + event.clientX +" - clientY: " + event.clientY);
-    fillSqr(x,y,"red");
-});
+
+var first_labels = [lbl1, lbl2, lbl3,lbl4,lbl5,lbl6,lbl7,lbl8,lbl9,lbl10];
+var sec_labels = [lbl1_1, lbl2_1, lbl3_1, lbl4_1, lbl5_1,lbl6_1,lbl7_1,lbl8_1,lbl9_1,lbl10_1];
+var sndPlayed = [0,0,0,0,0,0,0,0,0,0];
+var timediff = 20;
+var timeZone = 2;
 
 
-btn1.addEventListener("click", function(){
-    //p0.textContent="qwqeqwe";
-    var snd = new Audio("./sounds/"+sounds[3]); 
-    snd.play();
-    
-});
-
-b2.addEventListener("click", function(){
-    var x = Math.floor(Math.random()*100);
-    p0.textContent= x;   
-    readNumber(x);
-});
 
 b3.addEventListener("click", function(){
-    
+    var all_labels = first_labels.concat(sec_labels);
+    for(var i=0; i<all_labels.length; i++){
+        all_labels[i].textContent = "";
+    }
+
+    for(var i = 0; i < sndPlayed.length; i++){
+        sndPlayed[i] = 0;
+    }
     
 });
 
-function writeToText(event) {
-    var x = event.keyCode;
-    if (x == 13) {  // 27 is the ESC key
-      ptime.textContent = input.value;
+function writeToText(event, input, label) {    
+    if (event.keyCode == 13) {  // 27 is the ESC key
+      label.textContent = input.value;
       input.value = "";
-      console.log("enter key");
+      
     }
 }
 
 
+function writeToTextSeperate(event, input, label, label_2) { 
+    var str =" ";
+    if(input.value.includes("-")){
+        str = "-";
+    } 
+    var arr = input.value.split(str); 
+    if (event.keyCode == 13) {  // 27 is the ESC key
+      
+      label.textContent = arr[0];
+      label_2.textContent = arr[1];
+      input.value = "";
+      
+    }
+}
+
 function readNumber(num){    
     var a = num%10;
     var b = Math.floor(num/10);
-    var sa = new Audio("./sounds/"+sounds[a]);
-    var sb = new Audio("./sounds/"+sounds[b]);
+    var sa = new Audio("./sounds/"+a+".mp3");
+    var sb = new Audio("./sounds/"+b+".mp3");
     sb.play();
     setTimeout(() => {
         sa.play();
     }, 700);
 }
 
-//--------------------------------------------------------------------
-//------------------------CANVAS--------------------------------------
-//--------------------------------------------------------------------
-var width = 600;   //(600 /20 - 1) square wide
-var height = 400;  //(400 /20 - 1) square height
-var s_width = (width/20)-1;
-var s_height = (height/20)-1;
-var c_canvas = document.getElementById("c");
-var context = c_canvas.getContext("2d");
-var sizeOfSqr= 20;
-
-
-function drawGridLinesForCanvas(){
-    for (var x = 0; x <= width; x += sizeOfSqr) {        
-        context.moveTo(x, 0);
-        context.lineTo(x, height);        
-    }
-      
-    for (var y = 0; y <= height; y += sizeOfSqr) {        
-        context.moveTo(0, y);
-        context.lineTo(width, y);   
+function readPark(str){
+    var ch = str.split("");
+    var sec = 500;
+    for (let index = 0; index < ch.length; index++) {
         
-    } 
-    context.stroke();
-}
-
-drawGridLinesForCanvas();
-//generateRandomSqr(10);
-
-  
-  
-//--------------------------------------------------------------------
-//------------------------CANVAS--------------------------------------
-//--------------------------------------------------------------------
-
-function fillSqr(x,y,color){
-    context.fillStyle = color;
-    context.fillRect(((x-1)*sizeOfSqr),((y-1)*sizeOfSqr),sizeOfSqr-1,sizeOfSqr-1);    
-}
-
-function generateRandomSqr(amount){
-    for(var i=0; i < amount; i++){
-        var rndX = Math.round(Math.random()*(width/sizeOfSqr-1));
-        var rndY = Math.round(Math.random()*(height/sizeOfSqr-1));
-        var c = Math.round(Math.random() * colors.length);
-        fillSqr(rndX,rndY, colors[c]);
+        setTimeout(()=>{
+            var s = new Audio("./sounds/"+ch[index]+".mp3");
+            console.log(ch[index]);
+            s.play();
+        }, sec);
+        sec += 500;
     }
+    
 }
 
-function drawWall(x, y, len){    
-    for(var i=0; i < len; i++){         
-        var d = Math.floor(Math.random()*4)+1;
-        switch (d) {
-            case 1:
-                x++;
-                break;
-            case 2:
-                x--;
-                break;
-            case 3:
-                y++;
-                break;
-            case 4:
-                y--;
-                break;    
-            default:
-                break;
-        }          
-        fillSqr(x, y,"black");
-    }
+function readWarningFor(str){
+    var sa = new Audio("./sounds/warning.mp3");
+    var sb = new Audio("./sounds/conflict.mp3");
+    sa.play();
+    setTimeout(() => {
+        sb.play();
+    }, 1000);
+    setTimeout(() => {
+       readPark(str);
+    }, 3000);
+    
+    
 }
 
+function flashtext(ele,col) {
+    var tmpColCheck = ele.style.backgroundColor;
+    
+      if (tmpColCheck === 'silver') {
+        ele.style.backgroundColor = col;
+      } else {
+        ele.style.backgroundColor = 'silver';
+      }
+} 
 
+function select_value(){
+    timediff = parseInt(min.options[min.selectedIndex].textContent);
+    console.log(timediff);
+}
 
-drawWall(5,10,100);
-
-
-
-
-
+function select_Zone(){
+    timeZone = parseInt(time_zone.options[time_zone.selectedIndex].textContent);
+    console.log(timeZone);
+}
 
 //-----------------INTERVALS-------------------------------------
 
 setInterval(myTime, 1000);
-var gen = setInterval(function(){    
-    //generateRandomSqr(10);
-}, 100);
 
-//clearInterval(gen);
-//----------------------------------------------------------------
 
-window.onload = function (){
+var gen = setInterval(function(){   
+    var d = new Date();
+    d.setMinutes(d.getMinutes() + timediff);   // subtract 20 minutes
+    var n = d.toLocaleTimeString(); 
+    //console.log(d.getMinutes);
+    for(var i=0; i< sec_labels.length; i++){
+        //console.log(sndPlayed[i]);
+        if(sec_labels[i].textContent == ""){
+
+        }else if(n > sec_labels[i].textContent){        
+            flashtext(sec_labels[i], "red");
+            if(sndPlayed[i] == 0){
+                readWarningFor(first_labels[i].textContent);
+                sndPlayed[i]=1;                
+            } 
+        }else{        
+            sec_labels[i].style.backgroundColor = "powderblue";            
+        }
+    }
     
-}
+}, 300);
+
+
 
 
   
