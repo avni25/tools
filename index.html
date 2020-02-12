@@ -8,26 +8,87 @@
     <title>Document</title>
 </head>
 <body id="body" >
-
-    <p id="p0">avni</p>
+    
+    <p id="p0"></p>
     <p id="p1"></p>
-    <div class="btn-group">
-        <button class="btn" id="b1">read</button>
-        <button class="btn" id="b2">generate</button>
-        <button class="btn" id="b3">click me</button>
+    <div class="btn-group">       
+        <button class="btn" id="b3">Clean All</button>
     </div>
     
     <div class="input-group">
-        <input id="ip" type="text" onkeyup="writeToText(event)">
-        <label id="time"></label>
+        <div>
+            <input id="ip-1"  type="text" onkeyup="writeToTextSeperate(event, ip1, lbl1, lbl1_1)">
+            <label id="lbl-1"></label>
+            <label id="lbl-1-1"></label>
+        </div>
+        <div>
+            <input id="ip-2"  type="text" onkeyup="writeToTextSeperate(event, ip2, lbl2,lbl2_1)">
+            <label id="lbl-2"></label>
+            <label id="lbl-2-1"></label>
+        </div>
+        <div>
+            <input id="ip-3" type="text" onkeyup="writeToTextSeperate(event, ip3, lbl3, lbl3_1)">
+            <label id="lbl-3"></label>
+            <label id="lbl-3-1"></label>
+        </div>
+        <div>
+            <input id="ip-4" type="text" onkeyup="writeToTextSeperate(event, ip4, lbl4, lbl4_1)">
+            <label id="lbl-4"></label>
+            <label id="lbl-4-1"></label>
+        </div>
+        <div>
+            <input id="ip-5" type="text" onkeyup="writeToTextSeperate(event, ip5, lbl5, lbl5_1)">
+            <label id="lbl-5"></label>
+            <label id="lbl-5-1"></label>
+        </div>
+        <div>
+            <input id="ip-6" type="text" onkeyup="writeToTextSeperate(event, ip6, lbl6, lbl6_1)">
+            <label id="lbl-6"></label>
+            <label id="lbl-6-1"></label>
+        </div>
+        <div>
+            <input id="ip-7" type="text" onkeyup="writeToTextSeperate(event, ip7, lbl7, lbl7_1)">
+            <label id="lbl-7"></label>
+            <label id="lbl-7-1"></label>
+        </div>
+        <div>
+            <input id="ip-8" type="text" onkeyup="writeToTextSeperate(event, ip8, lbl8, lbl8_1)">
+            <label id="lbl-8"></label>
+            <label id="lbl-8-1"></label>
+        </div>
+        <div>
+            <input id="ip-9" type="text" onkeyup="writeToTextSeperate(event, ip9, lbl9, lbl9_1)">
+            <label id="lbl-9"></label>
+            <label id="lbl-9-1"></label>
+        </div>
+        <div>
+            <input id="ip-10" type="text" onkeyup="writeToTextSeperate(event, ip10, lbl10, lbl10_1)">
+            <label id="lbl-10"></label>
+            <label id="lbl-10-1"></label>
+        </div>
+    </div>
+    <div>
+        <label id="min">Min</label>
+        <select id="minutes" onchange="select_value()" >
+            <option value="ten">10</option>
+            <option value="fifteen">15</option>
+            <option value="twenty" selected>20</option>
+            <option value="twenty-five">25</option>
+            <option value="thirty">30</option>
+        </select>
+
+        <label id="zone">Tzone</label>
+        <select id="timeZone" onchange="select_Zone()">
+            <option value="ten" selected>+2</option>
+            <option value="fifteen">+3</option>
+            
+        </select>
     </div>
     
-    <canvas id="c" width="600px" height="400px" ></canvas>
-    <div>
-        <div id="chartContainer" style="height: 300px; width: 50%;"></div>
-    </div>
+    
+    
 </body>
 
 <script src="script.js"></script>
-<script src="canvasjs.min.js"></script>
+
 </html>
