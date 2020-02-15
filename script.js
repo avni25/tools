@@ -171,7 +171,10 @@ var gen = setInterval(function(){
     var n = d.toLocaleTimeString(); 
     //console.log(d.getMinutes);
     for(var i=0; i< sec_labels.length; i++){
-        //console.log(sndPlayed[i]);
+        
+         if (first_labels[i].textContent == "0"){
+            sndPlayed[i] = 0;
+            } 
         if(sec_labels[i].textContent == ""){
 
         }else if(n > sec_labels[i].textContent){        
