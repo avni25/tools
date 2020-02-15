@@ -54,7 +54,7 @@ var ip10 = document.getElementById("ip-10");
 var lbl10 = document.getElementById("lbl-10");
 var lbl10_1 = document.getElementById("lbl-10-1");
 
-
+var soundCheckBox = document.getElementById("soundCheck");
 
 var first_labels = [lbl1, lbl2, lbl3,lbl4,lbl5,lbl6,lbl7,lbl8,lbl9,lbl10];
 var sec_labels = [lbl1_1, lbl2_1, lbl3_1, lbl4_1, lbl5_1,lbl6_1,lbl7_1,lbl8_1,lbl9_1,lbl10_1];
@@ -160,6 +160,8 @@ function select_Zone(){
     console.log(timeZone);
 }
 
+
+
 //-----------------INTERVALS-------------------------------------
 
 setInterval(myTime, 1000);
@@ -170,17 +172,20 @@ var gen = setInterval(function(){
     d.setMinutes(d.getMinutes() + timediff);   // subtract 20 minutes
     var n = d.toLocaleTimeString(); 
     //console.log(d.getMinutes);
+    
     for(var i=0; i< sec_labels.length; i++){
-        
-         if (first_labels[i].textContent == "0"){
+        //console.log(sndPlayed[i]);
+        if (first_labels[i].textContent == "0"){
             sndPlayed[i] = 0;
-            } 
+        } 
         if(sec_labels[i].textContent == ""){
 
         }else if(n > sec_labels[i].textContent){        
             flashtext(sec_labels[i], "red");
             if(sndPlayed[i] == 0){
-                readWarningFor(first_labels[i].textContent);
+                if(soundCheckBox.checked == true){
+                    readWarningFor(first_labels[i].textContent);
+                }                
                 sndPlayed[i]=1;                
             } 
         }else{        
@@ -188,7 +193,7 @@ var gen = setInterval(function(){
         }
     }
     
-}, 300);
+}, 1000);
 
 
 
