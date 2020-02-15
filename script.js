@@ -193,7 +193,7 @@ var gen = setInterval(function(){
         }
     }
     
-}, 1000);
+}, 400);
 
 
 
