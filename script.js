@@ -15,7 +15,7 @@ var time_zone = document.getElementById("timeZone");
 
 var b3 = document.getElementById("b3");
 
-var p0 = document.getElementById("p0");
+
 var lbl1 = document.getElementById("lbl-1");
 var lbl1_1 = document.getElementById("lbl-1-1");
 var ip1 = document.getElementById("ip-1");
